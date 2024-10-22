@@ -1,6 +1,8 @@
-﻿using LearningProject.Classes;
+﻿using LearningProject.Abstract_Classes;
+using LearningProject.Classes;
 using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LearningProject
 {
@@ -8,6 +10,8 @@ namespace LearningProject
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             // Порада: Коментуйте кожен регіон, який вам на разі не потрібен для виконання
 
             #region Основа та Змінні
@@ -382,6 +386,50 @@ namespace LearningProject
                 Serving: Pasta
                 Serving: Burger
                 Serving: Pizza  */
+            #endregion
+
+            #region Abstract class & Interface (дивіться клас Vehicle)
+
+            // Приклад виклику того самого методу Move реалізованого по-різному в дочірніх класах
+            Vehicle car = new Car { Model = "VW" };
+            car.Move();
+
+            Vehicle car2 = new Car { Model = "Audi" };
+            car.Move();
+
+            Vehicle bicycle = new Bicycle { Model = "BMX" };
+            bicycle.Move();
+
+            // Поліморфізм
+            List<Vehicle> vehicles = new List<Vehicle>
+            {
+                new Car { Model = "Audi" },
+                new Bicycle { Model = "Yamaha" },
+                new Plane { Model = "AirBus" }
+            };
+
+            foreach (var person in vehicles)
+            {
+                Console.WriteLine($"{person.Model}");
+            }
+
+            // Приклад реалізації інтерфейсу IComparable
+            Vehicle[] vehiclesArrary = { car, car2, bicycle };
+
+            Array.Sort(vehiclesArrary);
+
+            foreach (var vehicle in vehiclesArrary)
+            {
+                Console.WriteLine($"Model: {vehicle.Model}"); 
+            }
+
+            /*Вивід:
+                Audi
+                BMX
+                VW */
+
+            /* Пояснення: Після реалізації IComparable в нас з'явилась змога порівнювати об'єкти класу Vehicle.
+               Тобто тепер ми можемо посортувати їх за Моделюю (бо саме модель ми вирішили порівнювати в методі CompareTo) */
             #endregion
 
             Console.ReadKey();

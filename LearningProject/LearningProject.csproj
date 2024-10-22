@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract Classes\Vehicle.cs" />
     <Compile Include="Classes\Client.cs" />
     <Compile Include="Classes\MyExamples\DragonTest.cs" />
     <Compile Include="Classes\MyExamples\FCLInterfaces.cs" />
